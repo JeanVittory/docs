@@ -237,11 +237,11 @@ def tool_node(state: dict):
 :::js
 
 ```typescript
-import { isAIMessage, ToolMessage } from "@langchain/core/messages";
+import { AIMessage, ToolMessage } from "@langchain/core/messages";
 async function toolNode(state: z.infer<typeof MessagesState>) {
   const lastMessage = state.messages.at(-1);
 
-  if (lastMessage == null || !isAIMessage(lastMessage)) {
+  if (lastMessage == null || !AIMessage.isInstance(lastMessage)) {
     return { messages: [] };
   }
 
