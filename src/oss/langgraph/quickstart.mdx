@@ -288,7 +288,7 @@ def should_continue(state: MessagesState) -> Literal["tool_node", END]:
 ```typescript
 async function shouldContinue(state: z.infer<typeof MessagesState>) {
   const lastMessage = state.messages.at(-1);
-  if (lastMessage == null || !isAIMessage(lastMessage)) return END;
+  if (lastMessage == null || !AIMessage.isInstance(lastMessage)) return END;
 
   // If the LLM makes a tool call, then perform an action
   if (lastMessage.tool_calls?.length) {
